@@ -1,0 +1,31 @@
+version: "3.6"
+
+services:
+  app:
+    build: .
+    command: sh -c "cargo watch -x run"
+    container_name: todo_tide_app
+    ports:
+      - 1234:1234
+    volumes:
+      - .:/app
+
+  db:
+    container_name: todo_tide_db
+    env_file:
+      - .env
+    entrypoint:
+      - /surreal
+      - start
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASSWORD
+      - --log
+      - trace
+      - file://app/data/surrealdb
+    image: surrealdb/surrealdb:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data:/app/data

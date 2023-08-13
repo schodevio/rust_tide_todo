@@ -9,3 +9,4 @@ edition = "2021"
 tide = "0.16.0"
 
 models = { path = "../models" }
+shared = { path = "../shared" }

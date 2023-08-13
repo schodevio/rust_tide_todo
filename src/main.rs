@@ -3,7 +3,7 @@ use controllers::{
 	projects_controller
 };
 
-const HOST: &str = "127.0.0.1";
+const HOST: &str = "0.0.0.0";
 const PORT: &str = "1234";
 
 #[async_std::main]
@@ -27,6 +27,9 @@ async fn main() -> tide::Result<()> {
 
 			projects.at("/").get(projects_controller::index);
 			projects.at("/").post(projects_controller::create);
+
+			projects.at("/:id").put(projects_controller::update);
+			projects.at("/:id").delete(projects_controller::destroy);
 
 			projects
 		});

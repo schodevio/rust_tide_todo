@@ -6,7 +6,7 @@ use models::routing;
 
  */
 pub async fn hello(_req: Request<()>) -> Result<String> {
-	Ok("Hello ToDo App".to_string())
+	Ok("Hello ToDo App from Docker".to_string())
 }
 
 /*

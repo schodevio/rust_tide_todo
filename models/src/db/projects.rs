@@ -1,8 +1,9 @@
 use serde::{Deserialize, Serialize};
+use surrealdb::sql::Thing;
 
 #[derive(Deserialize, Serialize)]
 pub struct Project {
-  pub id: u32,
+  pub id: Thing,
   pub name: String,
 }
 
